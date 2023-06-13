@@ -7,12 +7,8 @@
     "build": "next build",
     "start": "next start",
     "next:lint": "next lint",
-    "lint": "eslint ./ -c .eslintrc.json --ext ts,tsx --no-error-on-unmatched-pattern --quiet"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run lint"
-    }
+    "lint": "eslint ./ -c .eslintrc.json --ext ts,tsx --no-error-on-unmatched-pattern --quiet",
+    "pre-commit": "pretty-quick --staged && npm run lint"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
