@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = {
+export const initialState = {
   testItem: 1,
 };
 

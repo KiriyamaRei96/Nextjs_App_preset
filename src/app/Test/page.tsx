@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { testItem } from "./slice/selector";
 
 export default function Test() {
   return (
@@ -6,7 +7,7 @@ export default function Test() {
       <Link href="/">
         <span>home</span>
       </Link>
-      <h1>test page</h1>
+      <h1>{}</h1>
     </>
   );
 }
