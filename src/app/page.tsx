@@ -1,13 +1,12 @@
-"use client";
-
-import { GlobalStyle } from "@/styles/globalStyle";
-import Image from "next/image";
+import Link from "next/link";
 
 export default function App() {
   return (
     <>
+      <Link href="/Test">
+        <span>Test page</span>
+      </Link>
       <h1>test</h1>
-      <GlobalStyle />
     </>
   );
 }
