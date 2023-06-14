@@ -1,14 +1,14 @@
-import Link from "next/link";
 import { testItem } from "./slice/selector";
+import NavigationLink from "@/app/component/NavigationLink";
 
 export default function Test(props: any) {
   console.log(props);
 
   return (
     <>
-      <Link href="/">
+      <NavigationLink href="/">
         <span>home</span>
-      </Link>
+      </NavigationLink>
       <h1>{}</h1>
     </>
   );

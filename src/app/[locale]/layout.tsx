@@ -2,7 +2,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Provider } from "@/store/Provider";
 import { GlobalStyle } from "@/styles/globalStyle";
-
+import { NextIntlClientProvider } from "next-intl";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -12,13 +12,18 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={inter.className}>
-        <Provider>{children}</Provider>
+        <NextIntlClientProvider locale={locale}>
+          <Provider>{children}</Provider>
+        </NextIntlClientProvider>
+
         <GlobalStyle />
       </body>
     </html>

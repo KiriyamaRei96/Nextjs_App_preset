@@ -1,4 +1,4 @@
-import testSlice from "@/app/Test/slice/slice";
+import testSlice from "@/app/[locale]/Test/slice/slice";
 import { combineReducers } from "@reduxjs/toolkit";
 
 export const reducers = combineReducers({
