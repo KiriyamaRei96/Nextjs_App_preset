@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { testItem } from "./slice/selector";
 
-export default function Test() {
+export default function Test(props: any) {
+  console.log(props);
+
   return (
     <>
       <Link href="/">
