@@ -1,8 +1,8 @@
-import "./globals.css";
 import { Inter } from "next/font/google";
 import { Provider } from "@/store/Provider";
 import { GlobalStyle } from "@/styles/globalStyle";
 import { NextIntlClientProvider } from "next-intl";
+import { AntStyle } from "@/styles/AntdStyle";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,7 +21,9 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={inter.className}>
         <NextIntlClientProvider locale={locale}>
-          <Provider>{children}</Provider>
+          <Provider>
+            <AntStyle> {children}</AntStyle>
+          </Provider>
         </NextIntlClientProvider>
 
         <GlobalStyle />

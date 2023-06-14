@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LangSwitcher } from "../component/LangSwitcher";
 import NavigationLink from "../component/NavigationLink";
+import { Button } from "antd";
 
 export default function App(props: any) {
   console.log(props);
@@ -10,6 +11,7 @@ export default function App(props: any) {
         <span>Test page</span>
       </NavigationLink>
       <LangSwitcher />
+
       <h1>test</h1>
     </>
   );
