@@ -1,6 +1,8 @@
 import { BaseXHR } from "@/ultis/axios";
 import { testItem } from "./slice/selector";
 import NavigationLink from "@/app/component/NavigationLink";
+import { DatePicker } from "../component/DatePicker";
+
 async function getData(locale: string) {
   try {
     const { data } = await BaseXHR.$get(`v2/page/Hotel?locale=${locale}`);
@@ -18,6 +20,7 @@ export default async function Test({ params }: any) {
         <span>home</span>
       </NavigationLink>
       <h1>{data.title}</h1>
+      <DatePicker />
     </>
   );
 }

@@ -3,6 +3,8 @@ import { Provider } from "@/store/Provider";
 import { GlobalStyle } from "@/styles/globalStyle";
 import { NextIntlClientProvider } from "next-intl";
 import { AntStyle } from "@/styles/AntdStyle";
+import "react-datepicker/dist/react-datepicker.css";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
