@@ -23,6 +23,7 @@ export function LangSwitcher(props: LangSwitcherProps) {
         <Select.Option value="en">en</Select.Option>
       </Select>
       <Button type="primary">btn</Button>
+      <Button>btn</Button>
     </>
   );
 }

@@ -1,17 +1,24 @@
+/* eslint-disable react/display-name */
 "use client";
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 
 import ReactDatePicker from "react-datepicker";
 import getMonth from "date-fns/getMonth";
 import { addDays, getDate, getYear, subDays } from "date-fns";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 
-export interface DatePickerProps {
+export interface RangePickerProps {
   inline?: true;
+  className?: string;
+  mode: "search" | "input";
 }
 
-export function DatePicker({ inline }: DatePickerProps) {
-  const [startDate, setStartDate] = useState(new Date());
+export function RangePicker({ inline, className, mode }: RangePickerProps) {
+  const [dateRange, setDateRange] = useState([
+    subDays(new Date(), 6),
+    new Date(),
+  ]);
+  const [startDate, endDate] = dateRange;
   const months = [
     "Tháng Một",
     "Tháng Hai",
@@ -26,21 +33,40 @@ export function DatePicker({ inline }: DatePickerProps) {
     "Tháng Mười Một ",
     "Tháng Mười Hai ",
   ];
-  const dayPrice: any = {
-    "21": "100k",
-    "22": "100k",
-    "23": "100k",
-    "24": "100k",
-    "25": "100k",
-    "26": "100k",
-    "27": "100k",
-    "28": "100k",
-    "29": "100k",
-  };
-  const dateHandler = (date: any) => setStartDate(date);
+  const SearchInput = forwardRef(
+    ({ value, onClick, className }: any, ref: any) => (
+      <h6 className={className} onClick={onClick} ref={ref}>
+        {value ? value : "Chọn Khoảng thời gian"}
+      </h6>
+    )
+  );
+  const NormalInput = forwardRef(
+    ({ value, onClick, className }: any, ref: any) => (
+      <Input
+        readOnly
+        onClick={onClick}
+        ref={ref}
+        value={value ? value : "Chọn ngày"}
+        className={className + " " + "input-range"}
+        suffix={
+          <img
+            src={`${process.env.NEXT_PUBLIC_SUB_DIR}/static/img/calendar1.svg`}
+            alt=""
+          />
+        }
+      ></Input>
+    )
+  );
   return (
     <ReactDatePicker
       popperClassName={!inline ? "pad-btm-top" : ""}
+      customInput={
+        mode === "search" ? (
+          <SearchInput className={className} />
+        ) : (
+          <NormalInput />
+        )
+      }
       renderCustomHeader={({
         date,
         decreaseMonth,
@@ -70,13 +96,16 @@ export function DatePicker({ inline }: DatePickerProps) {
             <div className="number">
               <span>{getDate(date)}</span>
             </div>
-            <span className="price">{dayPrice[day.toString()]}</span>
+            <span className="price"></span>
           </div>
         );
       }}
+      selectsRange={true}
       startDate={startDate}
-      selected={startDate}
-      onChange={dateHandler}
+      endDate={endDate}
+      onChange={(update: any) => {
+        setDateRange(update);
+      }}
       includeDateIntervals={[
         { start: subDays(new Date(), 7), end: addDays(new Date(), 7) },
       ]}
